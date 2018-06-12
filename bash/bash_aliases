@@ -1,0 +1,46 @@
+# Vim-like to alias to exit
+alias q='exit'
+
+# Change to previous directory
+alias bd='cd $OLDPWD'
+
+# Navigating through parent directory
+alias ..="cd .."
+alias ..2="cd ../../"
+alias ..3="cd ../../../"
+alias ..4="cd ../../../../"
+alias ..5="cd ../../../../../"
+
+# Safer file removals
+# could change to mv $1 ~/.trash to make this even safer
+alias rm='rm -I'
+
+# Safer file movements, without overwriting
+alias mv='mv -n'
+
+# Untar files (I can't never remember those flags)
+alias untar='tar -zxvf'
+
+# ls
+alias sl='ls'
+alias l='ls --group-directories-first'
+alias ll='ls -AlFh --group-directories-first'
+
+# use ag, not ack
+# https://github.com/ggreer/the_silver_searcher
+alias ack='ag'
+alias a='a'
+
+# use neovim, not vim, not vi
+# https://github.com/neovim/neovim
+# to really use vim, type vim in full
+alias vi='nvim'
+alias nv='nvim'
+alias v='nvim'
+
+# copy / paste to clipboard
+alias clipcopy="xclip -sel clip"
+alias clippaste="xclip -sel clip -o"
+
+# maybe try again https://gist.github.com/JuggoPop/10706934
+alias gg="git s"
