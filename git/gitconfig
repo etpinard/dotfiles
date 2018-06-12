@@ -1,0 +1,33 @@
+[user]
+    name = Étienne Tétreault-Pinard
+    email = etienne.t.pinard@gmail.com
+
+[github]
+    etpinard
+
+[color]
+    ui = auto
+
+[alias]
+    br = branch
+    co = checkout
+    cm = commit
+    g = gui
+    d = diff
+    sh= sh
+    ss = status
+    s = status -sb
+    ll = log
+    l = log --oneline -n 10
+
+[core]
+    editor = vim
+
+[difftool]
+    prompt = false
+
+[diff]
+    tool = vimdiff
+
+[push]
+    default = simple
