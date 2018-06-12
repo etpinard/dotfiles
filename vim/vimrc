@@ -12,17 +12,16 @@
 "
 "  Run :PlugInstall in session to install plugins
 call plug#begin('~/.local/share/nvim/plugged')
+" Insert-mode text completion with <tab>
+Plug 'maxboisvert/vim-simple-complete'
+" automatic closing of quotes, parenthesis, brackets
+Plug 'Raimondi/delimitMate'
 " JS syntax highlighting and improved indentation
 Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 " show indent guides
 " - \ig (normal, visual modes) to toggle indent guide
 Plug 'nathanaelkane/vim-indent-guides'
-" automatic closing of quotes, parenthesis, brackets
-Plug 'Raimondi/delimitMate'
-" ...
-" ... ...
-Plug 'ctrlpvim/ctrlp.vim'
 " Highlights and strips trailing white spaces
 Plug 'ntpeters/vim-better-whitespace'
 " Commenting helper
@@ -31,6 +30,10 @@ Plug 'scrooloose/nerdcommenter'
 " File system explorer
 " - \l (normal mode) to open it up
 Plug 'scrooloose/nerdtree'
+" Fuzzy search
+" - \p (normal mode) to start searching files
+" - \o (normal mode) to lookup "most recently used" files
+Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
 "" vim-only
@@ -67,6 +70,11 @@ set wildmode=longest,list,full
 set wildchar=<Tab>
 " ignore non-text files for wild menu completions
 set wildignore=*.pdf,*.png,*.jpg,*.jpeg,*.aux,*.pyc
+
+" Text completion
+" don't use included files and tag complete for better performances
+set complete-=t
+set complete-=i
 
 "" Textwidth and text wrapping
 
@@ -148,6 +156,10 @@ noremap ' <nop>
 nnoremap 0 ^
 nnoremap ^ 0
 
+" append into insert mode at end of line (another finger-saver)
+noremap a A
+noremap A a
+
 " move cursor back to location of last change (default: `[ )
 nnoremap 'q `[
 
@@ -205,7 +217,6 @@ set pastetoggle=<F2>
 cnoreabbrev C cd %:p:h<cr>
 
 "" Folding stuff
-
 " To save manual folds ( <z-f> ) when exiting file
 au BufWinLeave * silent! mkview
 au BufWinEnter * silent! loadview
@@ -230,9 +241,6 @@ nnoremap z<right> ]s
 nnoremap z<S-left> [sz=
 nnoremap z<S-right> ]sz=
 
-" Try https://andrew.stwrt.ca/posts/project-specific-vimrc/
-"
-
 " vim-indent-guide settings
 " to be visible in distinguished colorscheme
 let g:indent_guides_auto_colors = 0
@@ -254,3 +262,13 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " open NERDTree automatically when vim starts up on opening a directory?
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+
+"" ctrlp
+nnoremap <Leader>p :CtrlP<CR>
+nnoremap <Leader>o :CtrlPMRUFiles<CR>
+" ignore things in gitignore
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+" TODO
+" Try https://andrew.stwrt.ca/posts/project-specific-vimrc/
+"
