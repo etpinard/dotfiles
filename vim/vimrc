@@ -1,0 +1,256 @@
+"""""""""""""""""""""""""""""""""""""""
+" vimrc                               "
+"                                     "
+" Author: Étienne Tétreault-Pinard    "
+"                                     "
+"""""""""""""""""""""""""""""""""""""""
+
+"" Plugins
+
+"  Installed using vim-plug,
+"  see https://github.com/junegunn/vim-plug
+"
+"  Run :PlugInstall in session to install plugins
+call plug#begin('~/.local/share/nvim/plugged')
+" JS syntax highlighting and improved indentation
+Plug 'pangloss/vim-javascript'
+Plug 'jelera/vim-javascript-syntax'
+" show indent guides
+" - \ig (normal, visual modes) to toggle indent guide
+Plug 'nathanaelkane/vim-indent-guides'
+" automatic closing of quotes, parenthesis, brackets
+Plug 'Raimondi/delimitMate'
+" ...
+" ... ...
+Plug 'ctrlpvim/ctrlp.vim'
+" Highlights and strips trailing white spaces
+Plug 'ntpeters/vim-better-whitespace'
+" Commenting helper
+" - \c<space> (normal, visual modes) for toggle comment/uncomment
+Plug 'scrooloose/nerdcommenter'
+" File system explorer
+" - \l (normal mode) to open it up
+Plug 'scrooloose/nerdtree'
+call plug#end()
+
+"" vim-only
+set nocompatible
+set ttyfast
+set t_Co=256
+
+"" General appearance
+
+" word highlighting for specific file types
+syntax on
+" force a black background in Vim
+set background=dark
+" color scheme for the highlights (must be downloaded)
+colorscheme distinguished
+" line numbers in the left margin
+set number
+
+"" Menus and status (bottom-of-screen) bar
+
+" make the status line permanent
+set laststatus=2
+" show command in status bar
+set showcmd
+" show current mode in status bar
+set showmode
+" show line and column number in status bar
+set ruler
+" enable tab-auto-completion in status bar
+set wildmenu
+" some wild menu options to make it behave like in *nix terminal
+set wildmode=longest,list,full
+" force <tab> to be the completion character
+set wildchar=<Tab>
+" ignore non-text files for wild menu completions
+set wildignore=*.pdf,*.png,*.jpg,*.jpeg,*.aux,*.pyc
+
+"" Textwidth and text wrapping
+
+" set lines to at most 80 characters long,
+" double that in html files
+set textwidth=80
+autocmd FileType html set textwidth=160
+" disable adjustable textwidth as a function of the terminal window size
+set nowrap
+
+"" Tabs and shifts
+
+" tabs are now expanded into spaces,
+set expandtab
+" set tabs to 4 spaces
+set tabstop=4
+" set indent (i.e. << , >>) width to 4 spaces
+set shiftwidth=4
+" guess indent based on previous line
+set autoindent
+" tries to indent properly based on filetype
+set smartindent
+
+"" Searches (/ , ?) and substitutions (:s)
+
+" show matching brackets
+set showmatch
+" .. for 2 tenth of a second
+set mat=2
+" set /g flag on :s substitutions to default
+set gdefault
+" search as you type
+set incsearch
+" first disable case sensitive searches
+set ignorecase
+" then, make small-char search=case-insensitive / long-char=case-sensitive
+set smartcase
+" search entire file not just from current location to end-of-file
+set wrapscan
+" do not highlight searches, mostly annoying
+set nohlsearch
+
+"" History, swap files and undo
+
+" remember the last 100 commands (default is 20)
+set history=100
+" swap files are more annoying than anything
+set noswapfile
+
+"" Enable mouse scrolling (only in normal mode)
+"  (scrolling is still enable in insert mode)
+set mouse=n
+nnoremap <ScrollWheelUp> 3<C-Y>
+nnoremap <ScrollWheelUp> 3<C-Y>
+
+"" Custom key maps
+"
+" Some notes:
+" - n: normal mode maps
+" - i: insert mode maps
+" - noremap: non recursive maps
+" - <C-\><C-N>: a safer way to <ESC>
+" - <S>:  shift
+
+" map ; to : in normal mode (nore for non-recursively) and vice-versa
+" ; is seldom used whereas : accesses the command line
+noremap ; :
+noremap : ;
+
+" move cursor to middle of screen and scroll half a screen down (up)
+nnoremap <c-down> M<C-D>
+nnoremap <c-up> M<C-U>
+
+" Finger savers (try to use crtl & shift as little as possible)
+" (the ' character is redundant with ` , use it for custom maps)
+noremap ' <nop>
+
+" interchange 0 and ^ , I move to 1st character more often then to 1st column
+nnoremap 0 ^
+nnoremap ^ 0
+
+" move cursor back to location of last change (default: `[ )
+nnoremap 'q `[
+
+" move cursor one work backward at the end of the word (default: ge)
+nnoremap 'e ge
+
+" redefine the split-screen toggle (default <c-w>)
+nnoremap 'w <c-w>
+nnoremap <S-left> <c-w>h
+nnoremap <S-right> <c-w>l
+nnoremap <S-down> <c-w>j
+nnoremap <S-up> <c-w>k
+
+" enter block visual mode (default <c-v>)
+nnoremap 'v <c-v>
+
+" redo command (default <c-r>)
+noremap 'r <c-r>
+
+" display buffers
+nnoremap <F2> :buffers<CR>
+
+" toggle buffer left/right
+nnoremap <F3> :w<CR>:bp<CR>
+nnoremap <F4> :w<CR>:bn<CR>
+
+" make backspace work in normal mode
+nnoremap <bs> dh
+
+" make enter work in normal mode, <cr> still works normally in command mode
+nnoremap <cr> i<cr><C-\><C-N>
+
+" copy all to clipboard
+nnoremap <C-A> :%y+<cr>
+
+" copy visual selection to clipboard
+vnoremap <C-A> "+y"
+
+" yank to end of line (consistent with 'D' and 'C' syntax)
+nnoremap Y y$
+
+" bash-like keys for the command line start and end of line
+cnoremap <C-A> <Home>
+cnoremap <C-E> <End>
+
+" insert new line below (above) and stay in normal mode on same line
+nnoremap 'o o<C-\><C-N>k
+nnoremap 'O ko<C-\><C-N>j
+
+" toggle between in and out paste mode which forgoes formatting and indentation
+" ideal for pasting verbatim text
+set pastetoggle=<F2>
+
+" cd into current directory
+cnoreabbrev C cd %:p:h<cr>
+
+"" Folding stuff
+
+" To save manual folds ( <z-f> ) when exiting file
+au BufWinLeave * silent! mkview
+au BufWinEnter * silent! loadview
+
+"" Spelling stuff
+
+" set spell if Vim version allows it, set default language to English
+if v:version > 700
+	set spell
+	setlocal spell spelllang=en_us
+endif
+
+" sometimes I write in French
+nnoremap <F9> :setlocal spell spelllang=fr<CR>
+" disable and enable spell on the go
+nnoremap <F8> :setlocal spell spelllang=en_us<CR>
+
+" shortcut previous and next misspelled word dictionary search
+" Mapping the Alt key is fine with the arrow keys without set winaltkeys=no
+nnoremap z<left> [s
+nnoremap z<right> ]s
+nnoremap z<S-left> [sz=
+nnoremap z<S-right> ]sz=
+
+" Try https://andrew.stwrt.ca/posts/project-specific-vimrc/
+"
+
+" vim-indent-guide settings
+" to be visible in distinguished colorscheme
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+
+"" vim-better-whitespace settings
+let g:better_whitespace_enabled=0
+let g:strip_whitespace_on_save=1
+
+"" nerdcommenter settings
+let g:NERDSpaceDelims = 1
+let g:NERDDefaultAlign = 'left'
+
+"" nerdtree settings
+nnoremap <Leader>l :NERDTreeToggle<CR>
+" close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" open NERDTree automatically when vim starts up on opening a directory?
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
