@@ -21,10 +21,14 @@ alias mv='mv -n'
 # Untar files (I can't never remember those flags)
 alias untar='tar -zxvf'
 
+# evince pdf viewer
+alias ev='evince'
+
 # ls
 alias sl='ls'
-alias l='ls --group-directories-first'
-alias ll='ls -AlFh --group-directories-first'
+alias l='ls'
+alias la='ls -A'
+alias ll='ls -AlFh'
 
 # use ag, not ack
 # https://github.com/ggreer/the_silver_searcher
