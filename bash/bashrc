@@ -113,15 +113,13 @@ PROMPT_COMMAND='echo -ne "\033]0;Terminal\007"'
 # Bash addons =======
 
 # run `z` for fast directory navigation
-# see
-. $HOME/Documents/repos/z/z.sh
+. $HOME/bin/z.sh
 
-source $HOME/Documents/repos/bash-git-prompt/gitprompt.sh
+# nicer prompt in git repos
+source $HOME/bin/bash-git-prompt/gitprompt.sh
 
 # load nvm and add nvm bash_completion
 # see https://github.com/creationix/nvm
 export NVM_DIR="$HOME/.nvm"
-# load nvm
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-# load nvm bash_completion
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
