@@ -1,0 +1,16 @@
+#! /bin/bash
+
+usage() {
+cat << EOF
+    Usage: _du
+
+    Shortcut that displays the disk usage (du) of all normal and hidden files
+    in the current directory.
+EOF
+}
+
+case $1 in
+    -h|--help) usage; exit;;
+esac
+
+du -hsc * .[^.]* | sort -h
