@@ -17,8 +17,8 @@ Plug 'maxboisvert/vim-simple-complete'
 " automatic closing of quotes, parenthesis, brackets
 Plug 'Raimondi/delimitMate'
 " JS syntax highlighting and improved indentation
-Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
+Plug 'pangloss/vim-javascript'
 " show indent guides
 " - \ig (normal, visual modes) to toggle indent guide
 Plug 'nathanaelkane/vim-indent-guides'
@@ -51,6 +51,10 @@ set background=dark
 colorscheme distinguished
 " line numbers in the left margin
 set number
+" set terminal title
+" N.B. nvim has issues restoring terminal title on exit
+" see https://github.com/neovim/neovim/issues/4063
+set title
 
 "" Menus and status (bottom-of-screen) bar
 
@@ -156,9 +160,11 @@ noremap ' <nop>
 nnoremap 0 ^
 nnoremap ^ 0
 
+" bring next line up (w/o using pinky finger)
+noremap <Leader>j J
+
 " append into insert mode at end of line (another finger-saver)
-noremap a A
-noremap A a
+noremap <Leader>a A
 
 " move cursor back to location of last change (default: `[ )
 nnoremap 'q `[
