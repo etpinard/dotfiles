@@ -2,7 +2,7 @@
 
 HERE=$(dirname "$(readlink -f "$0")")
 
-# link gitconfig
-pushd ~
+echo 'Link gitconfig'
+pushd ~ > /dev/null
 ln -fs $HERE/gitconfig .gitconfig
-popd
+popd > /dev/null
