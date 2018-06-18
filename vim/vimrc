@@ -163,8 +163,11 @@ nnoremap ^ 0
 " bring next line up (w/o using pinky finger)
 noremap <Leader>j J
 
-" append into insert mode at end of line (another finger-saver)
+" append into insert mode at end of line (finger-saver)
 noremap <Leader>a A
+
+" go to end of file (another finger-saver)
+noremap <Leader>g G
 
 " move cursor back to location of last change (default: `[ )
 nnoremap 'q `[
