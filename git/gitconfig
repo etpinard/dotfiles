@@ -12,6 +12,7 @@
     br = branch
     co = checkout
     cob = checkout -b
+    com = checkout master
     cm = commit
     g = gui
     d = diff
