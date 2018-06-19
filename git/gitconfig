@@ -15,11 +15,11 @@
     cm = commit
     g = gui
     d = diff
-    sh= sh
     ss = status
     s = status -sb
     ll = log
     l = log --oneline -n 10
+    lm = ls-files -m
 
 [core]
     editor = vim
