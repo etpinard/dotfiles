@@ -14,6 +14,7 @@
     cob = checkout -b
     com = checkout master
     cm = commit
+    cp = cherry-pick
     g = gui
     d = diff
     ss = status
