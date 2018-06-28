@@ -225,6 +225,9 @@ set pastetoggle=<F2>
 " cd into current directory
 cnoreabbrev C cd %:p:h<cr>
 
+" vertical split buffer
+cnoreabbrev vsb vert sb<cr>
+
 "" Folding stuff
 " To save manual folds ( <z-f> ) when exiting file
 au BufWinLeave * silent! mkview
