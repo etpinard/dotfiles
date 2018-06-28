@@ -11,6 +11,9 @@ alias ..3="cd ../../../"
 alias ..4="cd ../../../../"
 alias ..5="cd ../../../../../"
 
+# Clear terminal (finger-saver, instead of <c-l>)
+alias c="clear"
+
 # Safer file removals
 # could change to mv $1 ~/.trash to make this even safer
 alias rm='rm -I'
