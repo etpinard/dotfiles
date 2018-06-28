@@ -10,6 +10,7 @@
 
 [alias]
     br = branch
+    brd = branch -d
     co = checkout
     cob = checkout -b
     com = checkout master
