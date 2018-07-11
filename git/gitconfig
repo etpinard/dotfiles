@@ -16,6 +16,8 @@
     com = checkout master
     cm = commit
     cp = cherry-pick
+    rb = rebase
+    rbi = rebase --interactive
     g = gui
     d = diff
     ss = status
