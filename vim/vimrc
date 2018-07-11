@@ -19,6 +19,7 @@ Plug 'Raimondi/delimitMate'
 " JS syntax highlighting and improved indentation
 Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
+Plug 'tikhomirov/vim-glsl'
 " show indent guides
 " - \ig (normal, visual modes) to toggle indent guide
 Plug 'nathanaelkane/vim-indent-guides'
