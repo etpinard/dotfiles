@@ -22,6 +22,7 @@
     d = diff
     ss = status
     s = status -sb
+    last = show HEAD
     ll = log
     l = log --oneline -n 10
     lm = ls-files -m
