@@ -35,7 +35,7 @@
     fetch-pr = "!f() { ID=$1; BRANCHNAME=${2-pr-$1}; git fetch origin pull/$ID/head:$BRANCHNAME; }; f"
 
 [core]
-    editor = vim
+    editor = vi
 
 [difftool]
     prompt = false
