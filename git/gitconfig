@@ -18,6 +18,7 @@
     cp = cherry-pick
     rb = rebase
     rbi = rebase --interactive
+    rbm = rebase master
     g = gui
     d = diff
     ss = status
