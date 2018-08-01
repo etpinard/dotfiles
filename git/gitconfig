@@ -27,6 +27,7 @@
     ll = log
     l = log --oneline -n 10
     lm = ls-files --modified
+    lu = ls-files --others --exclude-standard
 
     # git alias with parameters
     # https://jondavidjohn.com/git-aliases-parameters/
