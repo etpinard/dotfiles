@@ -25,7 +25,7 @@
     last = show HEAD
     ll = log
     l = log --oneline -n 10
-    lm = ls-files -m
+    lm = ls-files --modified
 
     # git alias with parameters
     # https://jondavidjohn.com/git-aliases-parameters/
