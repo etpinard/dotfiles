@@ -17,7 +17,6 @@ Plug 'maxboisvert/vim-simple-complete'
 " automatic closing of quotes, parenthesis, brackets
 Plug 'Raimondi/delimitMate'
 " JS syntax highlighting and improved indentation
-Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'tikhomirov/vim-glsl'
 " show indent guides
