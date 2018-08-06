@@ -30,5 +30,11 @@ cp -f distinguished.vim ~/.config/nvim/colors/distinguished.vim
 rm -f distinguished.vim
 
 echo 'Install plugins as listed in vimrc'
-vim +PlugIntall +qall
-nvim +PlugIntall +qall
+vim +PlugInstall +qall
+
+if [ -x "$(command -v foo)" ]; then
+    echo 'Install plugins for neovim'
+    nvim +PlugInstall +qall
+else
+    echo 'neovim not install, skip step'
+fi
