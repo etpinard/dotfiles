@@ -8,9 +8,11 @@ mkdir -p ~/.config/nvim/colors
 mkdir -p ~/.local/share/nvim/site/autoload
 
 echo 'Link vimrc'
-#pushd ~ > /dev/null
-#ln -fs $HERE/vimrc .vimrc
-#popd > /dev/null
+pushd ~ > /dev/null
+ln -fs $HERE/vimrc .vimrc
+popd > /dev/null
+
+echo 'Link vimrc for neovim'
 pushd ~/.config/nvim > /dev/null
 ln -fs $HERE/vimrc init.vim
 popd > /dev/null
