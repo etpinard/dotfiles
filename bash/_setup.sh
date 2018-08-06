@@ -20,3 +20,8 @@ mv -f z.sh ~/bin
 # https://github.com/magicmonty/bash-git-prompt
 echo 'Download bash-git-prompt to ~/bin'
 git clone https://github.com/magicmonty/bash-git-prompt.git ~/bin/bash-git-prompt --depth=1
+
+# need to do this in all open windows
+echo 'Source bash rc files'
+source ~/.profile
+source ~/.bashrc
