@@ -49,6 +49,10 @@ syntax on
 set background=dark
 " color scheme for the highlights (must be downloaded)
 colorscheme distinguished
+" a better 'red' highlight for bad spelling
+hi clear SpellBad
+hi SpellBad cterm=underline
+hi SpellBad ctermfg=red guifg=red
 " line numbers in the left margin
 set number
 " set terminal title
