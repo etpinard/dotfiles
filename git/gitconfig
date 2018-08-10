@@ -15,6 +15,7 @@
     cob = checkout -b
     com = checkout master
     cm = commit
+    cmm = commit -m
     cp = cherry-pick
     rb = rebase
     rbi = rebase --interactive
