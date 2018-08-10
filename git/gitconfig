@@ -25,6 +25,7 @@
     ss = status
     s = status -sb
     last = show HEAD
+    back = reset HEAD^
     ll = log
     l = log --oneline -n 10
     lm = ls-files --modified
