@@ -193,7 +193,8 @@ nnoremap 'v <c-v>
 noremap 'r <c-r>
 
 " display buffers
-nnoremap <F2> :buffers<CR>
+"nnoremap <F2> :buffers<CR>
+" now using CtrlP
 
 " toggle buffer left/right
 nnoremap <F3> :w<CR>:bp<CR>
@@ -282,6 +283,7 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 "" ctrlp
 nnoremap <Leader>p :CtrlP<CR>
 nnoremap <Leader>o :CtrlPMRUFiles<CR>
+nnoremap <F2> :CtrlPBuffer<CR>
 " ignore things in gitignore
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
