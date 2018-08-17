@@ -28,7 +28,7 @@
     back = reset HEAD^
     ll = log
     l = log --oneline -n 10
-    lm = ls-files --modified
+    lm = diff --name-only --diff-filter=AM
     lu = ls-files --others --exclude-standard
 
     # git alias with parameters
