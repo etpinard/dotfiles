@@ -31,6 +31,7 @@ alias ev='evince'
 alias sl='ls'
 alias l='ls'
 alias la='ls -A'
+alias lla='ls -A'
 alias ll='ls -AlFh'
 
 # use ag, not ack
