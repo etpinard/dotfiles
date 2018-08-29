@@ -31,8 +31,8 @@ alias ev='evince'
 alias sl='ls'
 alias l='ls'
 alias la='ls -A'
-alias lla='ls -A'
 alias ll='ls -AlFh'
+alias lla='ls -AlFh'
 
 # use ag, not ack
 # https://github.com/ggreer/the_silver_searcher
