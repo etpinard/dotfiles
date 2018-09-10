@@ -9,17 +9,22 @@
     ui = auto
 
 [alias]
+    b = branch --list --sort=-committerdate
     br = branch
     brd = branch -d
+
     co = checkout
     cob = checkout -b
     com = checkout master
+
     cm = commit
     cmm = commit -m
+
     cp = cherry-pick
     rb = rebase
     rbi = rebase --interactive
     rbm = rebase master
+
     g = gui
     d = diff
     ss = status
