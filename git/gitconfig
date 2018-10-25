@@ -20,6 +20,8 @@
     cm = commit
     cmm = commit -m
 
+    wip = !git add --all && git commit -m wip
+
     cp = cherry-pick
     rb = rebase
     rbi = rebase --interactive
