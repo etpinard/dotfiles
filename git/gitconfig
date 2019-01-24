@@ -44,7 +44,7 @@
     fetch-pr = "!f() { ID=$1; BRANCHNAME=${2-pr-$1}; git fetch origin pull/$ID/head:$BRANCHNAME; }; f"
 
     # add all un-ignored files and commit
-    wip= "!f() { MSG=${1-wip}; git add --all; git commit -m "$MSG"; }; f"
+    wip= "!f() { MSG=${1-wip}; git add --all; git commit -m \"$MSG\"; }; f"
 
 [core]
     editor = vi
