@@ -155,8 +155,8 @@ noremap : ;
 " move cursor to middle of screen and scroll half a screen down (up)
 nnoremap <c-down> M<C-D>
 nnoremap <c-up> M<C-U>
-nnoremap <c-PageDown> M<C-D>
-nnoremap <c-PageUp> M<C-U>
+nnoremap <PageDown> M<C-D>
+nnoremap <PageUp> M<C-U>
 
 " Finger savers (try to use crtl & shift as little as possible)
 " (the ' character is redundant with ` , use it for custom maps)
@@ -182,14 +182,10 @@ nnoremap 'q `[
 nnoremap 'e ge
 
 " redefine the split-screen toggle (default <c-w>)
-nnoremap 'w <c-w>
-nnoremap <S-left> <c-w>h
-nnoremap <S-right> <c-w>l
-nnoremap <S-down> <c-w>j
-nnoremap <S-up> <c-w>k
-" Hmmm maybe try something else
-nnoremap <S-PageDown> <c-w>j
-nnoremap <S-PageUp> <c-w>k
+nnoremap `h <c-w>h
+nnoremap `l <c-w>l
+nnoremap `j <c-w>j
+nnoremap `k <c-w>k
 
 " enter block visual mode (default <c-v>)
 nnoremap 'v <c-v>
