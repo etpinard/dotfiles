@@ -32,7 +32,7 @@ rm -f distinguished.vim
 echo 'Install plugins as listed in vimrc'
 vim +PlugInstall +qall
 
-if [ -x "$(command -v foo)" ]; then
+if [ -x "$(command -v nvim)" ]; then
     echo 'Install plugins for neovim'
     nvim +PlugInstall +qall
 else
