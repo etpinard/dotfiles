@@ -226,6 +226,9 @@ cnoremap <C-E> <End>
 nnoremap 'o o<C-\><C-N>k
 nnoremap 'O ko<C-\><C-N>j
 
+" insert (a block) and re-indent
+nnoremap 'p p=%
+
 " toggle between in and out paste mode which forgoes formatting and indentation
 " ideal for pasting verbatim text
 set pastetoggle=<F2>
