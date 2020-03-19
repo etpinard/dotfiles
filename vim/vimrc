@@ -297,6 +297,14 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 " vim-javascript-syntax enable jsdoc syntax highlighting
 let g:javascript_plugin_jsdoc = 1
 
+" disable <Tab> completion for julia REPL-like latex 2 unicode,
+" as this conflicts with vim-simple-complete
+" enable "keymap" substitution instead
+let g:latex_to_unicode_tab = 0
+let g:latex_to_unicode_suggestions = 0
+let g:latex_to_unicode_eager = 0
+let g:latex_to_unicode_keymap = 1
+
 " TODO
 " Try https://andrew.stwrt.ca/posts/project-specific-vimrc/
 "
