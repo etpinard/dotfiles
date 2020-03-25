@@ -39,12 +39,17 @@ alias lla='ls -AlFh'
 alias ack='ag'
 alias a='a'
 
-# use neovim, not vim, not vi
-# https://github.com/neovim/neovim
-# to really use vim, type vim in full
-alias vi='nvim'
-alias nv='nvim'
-alias v='nvim'
+if [ -x "$(command -v nvim)" ]; then
+    # use neovim, not vim, not vi
+    # https://github.com/neovim/neovim
+    # to really use vim, type vim in full
+    alias v='nvim'
+    alias nv='nvim'
+elif [ -x "$(command -v vim)" ]; then
+    alias v='vim'
+else
+    alias v='vi'
+fi
 
 # copy / paste to clipboard
 alias clipcopy="xclip -sel clip"
