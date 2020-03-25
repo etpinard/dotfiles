@@ -34,10 +34,15 @@ alias la='ls -A'
 alias ll='ls -AlFh'
 alias lla='ls -AlFh'
 
-# use ag, not ack
-# https://github.com/ggreer/the_silver_searcher
-alias ack='ag'
-alias a='a'
+if [ -x "$(command -v ag)" ]; then
+    # use ag, not ack
+    # https://github.com/ggreer/the_silver_searcher
+    alias ack='ag'
+    alias a='ag'
+else
+    # but ack-grep is easier to install w/o sudo access
+    alias a='ack'
+fi
 
 if [ -x "$(command -v nvim)" ]; then
     # use neovim, not vim, not vi
