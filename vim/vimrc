@@ -264,6 +264,9 @@ nnoremap z<right> ]s
 nnoremap z<S-left> [sz=
 nnoremap z<S-right> ]sz=
 
+" to avoid having to press ENTER to save files opened via scp
+let g:netrw_silent = 1
+
 " vim-indent-guide settings
 " to be visible in distinguished colorscheme
 let g:indent_guides_auto_colors = 0
