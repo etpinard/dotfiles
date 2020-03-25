@@ -108,7 +108,8 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # Reset terminal title (in case program does not restore it)
-PROMPT_COMMAND='echo -ne "\033]0;Terminal\007"'
+# and show user@hostname and directory
+PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD/$HOME/~}\007"'
 
 # Bash addons =======
 
