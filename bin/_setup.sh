@@ -2,6 +2,8 @@
 
 HERE=$(dirname "$(readlink -f "$0")")
 
+mkdir -p ~/bin
+
 for f in $(ls $HERE); do
     if [ $f == '_setup.sh' ] || [ $f == 'README.md' ]; then
         continue
