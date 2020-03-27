@@ -20,6 +20,6 @@ fi
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 # set up environment variables
-if [ -z "$HOME/.bin/vars" ]; then
-    . "$HOME/.bin/vars"
+if [ -z "$HOME/bin/vars" ]; then
+    . "$HOME/bin/vars"
 fi
