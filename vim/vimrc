@@ -210,10 +210,10 @@ nnoremap <bs> dh
 nnoremap <cr> i<cr><C-\><C-N>
 
 " copy all to clipboard
-nnoremap <C-A> :%y+<cr>
+nnoremap <Leader>y :%y+<cr>
 
 " copy visual selection to clipboard
-vnoremap <C-A> "+y"
+vnoremap <Leader>y "+y"
 
 " yank to end of line (consistent with 'D' and 'C' syntax)
 nnoremap Y y$
