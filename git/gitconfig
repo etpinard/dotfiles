@@ -25,7 +25,6 @@
     rbi = rebase --interactive
     rbm = rebase master
 
-    g = gui
     d = diff
     ss = status
     s = status -sb
@@ -38,6 +37,10 @@
 
     # git alias with parameters
     # https://jondavidjohn.com/git-aliases-parameters/
+
+    # open git-gui or lazygit
+    # I like git-gui locally, lazygit on remote terminals
+    g = "!f() { git gui \"$@\" 2> /dev/null || (lazygit \"$@\") }; f"
 
     # fetch github pr locally
     # https://help.github.com/articles/checking-out-pull-requests-locally/
