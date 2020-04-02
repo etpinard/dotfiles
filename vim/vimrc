@@ -36,6 +36,8 @@ Plug 'scrooloose/nerdtree'
 " - \p (normal mode) to start searching files
 " - \o (normal mode) to lookup "most recently used" files
 Plug 'ctrlpvim/ctrlp.vim'
+" Navigate between vim splits and tmux panes with same bindings
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 "" vim-only
@@ -183,11 +185,15 @@ nnoremap 'q `[
 " move cursor one work backward at the end of the word (default: ge)
 nnoremap 'e ge
 
-" redefine the split-screen toggle (default <c-w>)
-nnoremap `h <c-w>h
-nnoremap `l <c-w>l
-nnoremap `j <c-w>j
-nnoremap `k <c-w>k
+" do not use default <C-h, <C-j> ....
+let g:tmux_navigator_no_mappings = 1
+
+" redefine the split-screen toggle (default <c-w>), with Alt key
+" make it work across tmux panes too
+nnoremap <silent> <M-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <M-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <M-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <M-l> :TmuxNavigateRight<cr>
 
 " enter block visual mode (default <c-v>)
 nnoremap 'v <c-v>
@@ -305,7 +311,6 @@ nnoremap <Leader>o :CtrlPMRUFiles<CR>
 nnoremap <F2> :CtrlPBuffer<CR>
 " ignore things in gitignore
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-
 
 " vim-javascript-syntax enable jsdoc syntax highlighting
 let g:javascript_plugin_jsdoc = 1
