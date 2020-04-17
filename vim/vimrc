@@ -264,8 +264,8 @@ au BufWinEnter * silent! loadview
 
 " set spell if Vim version allows it, set default language to English
 if v:version > 700
-	set spell
-	setlocal spell spelllang=en_us
+    set spell
+    setlocal spell spelllang=en_us
 endif
 
 " sometimes I write in French
