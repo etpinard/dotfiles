@@ -188,12 +188,22 @@ nnoremap 'e ge
 " do not use default <C-h, <C-j> ....
 let g:tmux_navigator_no_mappings = 1
 
-" redefine the split-screen toggle (default <c-w>), with Alt key
-" make it work across tmux panes too
-nnoremap <silent> <M-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <M-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <M-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <M-l> :TmuxNavigateRight<cr>
+if has('nvim')
+    " redefine the split-screen toggle (default <c-w>), with Alt key
+    " make it work across tmux panes too
+    nnoremap <silent> <M-h> :TmuxNavigateLeft<cr>
+    nnoremap <silent> <M-j> :TmuxNavigateDown<cr>
+    nnoremap <silent> <M-k> :TmuxNavigateUp<cr>
+    nnoremap <silent> <M-l> :TmuxNavigateRight<cr>
+else
+    " redefine the split-screen toggle (default <c-w>)
+    " w/o using the Alt key (which I can't to work properly
+    " outside of neovim)
+    nnoremap `h <c-w>h
+    nnoremap `l <c-w>l
+    nnoremap `j <c-w>j
+    nnoremap `k <c-w>k
+end
 
 " enter block visual mode (default <c-v>)
 nnoremap 'v <c-v>
