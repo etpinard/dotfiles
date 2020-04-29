@@ -205,6 +205,9 @@ else
     nnoremap `k <c-w>k
 end
 
+" open new sp below, open new vsp to the right
+set splitbelow splitright
+
 " enter block visual mode (default <c-v>)
 nnoremap 'v <c-v>
 
