@@ -1,0 +1,26 @@
+#! /bin/bash
+
+usage() {
+cat << EOF
+    Usage: _watch-run 'file-or-file-glob-to-watch' 'cmd-to-run'
+
+    Shortcut that starts a file watcher and runs a cmd on modifications.
+    Use <ctrl-c> to stop it.
+EOF
+}
+
+case $1 in
+    -h|--help) usage; exit;;
+esac
+
+if ! [ -x "$(command -v inotifywait)" ]; then
+    echo 'Please install inotifywait. Exit.'
+    exit 1
+fi
+
+if [ $3 ]; then
+    echo 'Invalid syntax, please group two arguments within quotes. Exit.'
+    exit 1
+fi
+
+eval "while true; do inotifywait -q -e modify $1; $2; done"
