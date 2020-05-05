@@ -169,10 +169,6 @@ nnoremap <c-up> M<C-U>
 nnoremap <PageDown> M<C-D>
 nnoremap <PageUp> M<C-U>
 
-" Finger savers (try to use crtl & shift as little as possible)
-" (the ' character is redundant with ` , use it for custom maps)
-noremap ' <nop>
-
 " interchange 0 and ^ , I move to 1st character more often then to 1st column
 nnoremap 0 ^
 nnoremap ^ 0
@@ -246,11 +242,11 @@ cnoremap <C-A> <Home>
 cnoremap <C-E> <End>
 
 " insert new line below (above) and stay in normal mode on same line
-nnoremap 'o o<C-\><C-N>k
-nnoremap 'O ko<C-\><C-N>j
+nnoremap `o o<C-\><C-N>k
+nnoremap `O ko<C-\><C-N>j
 
 " insert (a block) and re-indent
-nnoremap 'p p=%
+nnoremap `p p=%
 
 " toggle between in and out paste mode which forgoes formatting and indentation
 " ideal for pasting verbatim text
