@@ -156,7 +156,14 @@ nnoremap <ScrollWheelUp> 3<C-Y>
 noremap ; :
 noremap : ;
 
+" \J brings next line up
+" \K runs "program" on keyword
+noremap <Leader>j J
+noremap <Leader>k K
+
 " move cursor to middle of screen and scroll half a screen down (up)
+noremap J M<C-D>
+noremap K M<C-U>
 nnoremap <c-down> M<C-D>
 nnoremap <c-up> M<C-U>
 nnoremap <PageDown> M<C-D>
@@ -169,9 +176,6 @@ noremap ' <nop>
 " interchange 0 and ^ , I move to 1st character more often then to 1st column
 nnoremap 0 ^
 nnoremap ^ 0
-
-" bring next line up (w/o using pinky finger)
-noremap <Leader>j J
 
 " append into insert mode at end of line (finger-saver)
 noremap <Leader>a A
