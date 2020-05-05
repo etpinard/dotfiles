@@ -184,10 +184,10 @@ noremap <Leader>a A
 noremap <Leader>g G
 
 " move cursor back to location of last change (default: `[ )
-nnoremap 'q `[
+nnoremap <Leader>q `[
 
 " move cursor one work backward at the end of the word (default: ge)
-nnoremap 'e ge
+nnoremap <Leader>e ge
 
 " do not use default <C-h, <C-j> ....
 let g:tmux_navigator_no_mappings = 1
@@ -213,10 +213,10 @@ end
 set splitbelow splitright
 
 " enter block visual mode (default <c-v>)
-nnoremap 'v <c-v>
+nnoremap <Leader>v <c-v>
 
 " redo command (default <c-r>)
-noremap 'r <c-r>
+noremap <Leader>r <c-r>
 
 " display buffers
 "nnoremap <F2> :buffers<CR>
