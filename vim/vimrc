@@ -164,8 +164,8 @@ noremap `k K
 " move cursor to middle of screen and scroll half a screen down (up)
 noremap J M<C-D>
 noremap K M<C-U>
-nnoremap <c-down> M<C-D>
-nnoremap <c-up> M<C-U>
+noremap <c-j> M<C-D>
+noremap <c-k> M<C-U>
 nnoremap <PageDown> M<C-D>
 nnoremap <PageUp> M<C-U>
 
