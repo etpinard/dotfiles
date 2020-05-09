@@ -49,6 +49,9 @@
     # add all un-ignored files and commit
     wip= "!f() { MSG=${1-wip}; git add --all; git commit -m \"$MSG\"; }; f"
 
+     # prune old/stale remote branches, then list remote branches
+     b-r="!f() { REMOTE=${1-origin}; git remote prune $REMOTE; git b -r; }; f"
+
 [core]
     editor = vi
 
