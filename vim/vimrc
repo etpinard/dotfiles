@@ -156,10 +156,10 @@ nnoremap <ScrollWheelUp> 3<C-Y>
 noremap ; :
 noremap : ;
 
-" \J brings next line up
-" \K runs "program" on keyword
-noremap <Leader>j J
-noremap <Leader>k K
+" `J brings next line up
+" `K runs "program" on keyword - in case that comes up ;)
+noremap `j J
+noremap `k K
 
 " move cursor to middle of screen and scroll half a screen down (up)
 noremap J M<C-D>
