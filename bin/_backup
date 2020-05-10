@@ -1,0 +1,127 @@
+#! /bin/bash
+
+DEST=${1:-/media/etienne/lexur16/}
+BACKUPLIST=${2:-$HOME/BACKUPLIST.txt}
+
+PARENT=$DEST/backup-$(date +"%Y-%m-%d")
+FOLDER=$PARENT/backup
+
+# rsync with common options
+# a: archive mode
+# h: output human-readable number
+# R: (--relative) use relative path name
+RSYNC="rsync -ahR"
+# gitignore filter taken from:
+# https://gist.github.com/theothermattm/5c73c4919dd48fee7581
+# explicitly include .git/ and .gitignore which
+# can sometimes be excluded by the .gitignore globs
+FILTER=" --include=.git/ --include=.gitignore --filter=':- .gitignore'"
+
+_sync () {
+    pushd $HOME > /dev/null
+    eval "$RSYNC --info=progress2 $FILTER $@ $FOLDER"
+    popd > /dev/null
+}
+
+_dry () {
+    pushd $HOME > /dev/null
+    eval "${RSYNC}vn $FILTER $@ $FOLDER"
+    popd > /dev/null
+}
+
+_main () {
+    if [[ -d $DEST ]]; then
+        if [[ $DEST == /media/etienne/* ]]; then
+            free=$(df -h | grep ${DEST%/} | tr -s ' ' | cut -d' ' -f 4)
+            echo "Destination $DEST is mounted with $free available"
+        fi
+    else
+        echo "ERROR: Backup destination $DEST does not exist. Exit"
+        exit 1
+    fi
+
+    if [[ -d $PARENT ]]; then
+        echo "ERROR: Backup folder $PARENT already exists. Exit"
+        exit 1
+    fi
+
+    mkdir -p $FOLDER
+
+    total=0
+    IFS=$'\r\n'
+    echo "List of paths to backup:"
+    for i in $(< $BACKUPLIST); do
+        size=$(_dry $i | tail -n 1 | cut -d ' ' -f 4)
+        bytes=($(numfmt --from=iec $size))
+        total=$(($total + $bytes))
+        echo "- $i = $size"
+    done
+
+    echo "Total: $(numfmt --to=iec $total)"
+
+    read -r -p "Are you sure? [Y/N] " response
+    case "$response" in
+        [yY][eE][sS]|[yY])
+            ;;
+        [nN][oO]|[nN])
+            echo "Backup canceled. Exit"
+            rm -rf $PARENT
+            exit 1
+            ;;
+        *)
+            echo "ERROR: Invalid response. Exit"
+            rm -rf $PARENT
+            exit 1
+            ;;
+    esac
+
+    echo "Copying BACKUPLIST.txt to $PARENT"
+    cp $BACKUPLIST $PARENT
+
+    IFS=$'\r\n'
+    for i in $(< $BACKUPLIST); do
+        echo "Syncing $i"
+        _sync $i
+    done
+}
+
+_usage () {
+cat << EOF
+    Usage: _backup
+
+    Personal backup script.
+
+    Examples:
+
+    # backup items in ~/BACKUPLIST.txt to USB stick in new folder "backup-yyyy-mm-dd/"
+    - _backup
+
+    # backup items in ~/BACKUPLIST.txt to Destop/ (e.g. a somewhat dry run)
+    - _backup ~/Destop
+
+    # backup items in /path/to/some/other/BACKUPLIST.txt to /media/other/drive
+    - _backup /media/other/drive /path/to/some/other/BACKUPLIST.txt
+
+    Sample BACKUPLIST.txt:
+
+    file.ext
+    Documents/folder
+    Documents/other/folder --exclude=subfolder
+    Pictures/ --exclude=subfolder --exclude=another/subfolder
+
+    # TODO
+    - add compress option
+    - exit if there is not enough space on DEST
+
+EOF
+}
+
+case $1 in
+    --help | -h)
+        _usage
+        exit 0
+        ;;
+    *)
+        _main
+        ;;
+esac
