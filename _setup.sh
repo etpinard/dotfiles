@@ -1,6 +1,6 @@
 #! /bin/bash
 
-declare -a sub=("bin" "bash" "git" "vim" "tmux" "julia" "gnome")
+declare -a sub=("bin" "bash" "ssh" "git" "vim" "tmux" "julia" "gnome")
 
 for i in "${sub[@]}"; do
     echo 'Setting up:' $i
