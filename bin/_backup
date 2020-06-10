@@ -93,10 +93,10 @@ cat << EOF
 
     Examples:
 
-    # backup items in ~/BACKUPLIST.txt to USB stick in new folder "backup-yyyy-mm-dd/"
+    # backup items in ~/BACKUPLIST.txt to my lexur16 USB stick in new folder "backup-yyyy-mm-dd/"
     - _backup
 
-    # backup items in ~/BACKUPLIST.txt to Destop/ (e.g. a somewhat dry run)
+    # backup items in ~/BACKUPLIST.txt to ~/Destop/ (e.g. a somewhat dry run)
     - _backup ~/Destop
 
     # backup items in /path/to/some/other/BACKUPLIST.txt to /media/other/drive
