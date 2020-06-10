@@ -5,14 +5,14 @@ Personal configuration files
 ## Installation
 
 ```
-chmod +x _setup.sh
-./_setup.sh
-```
+(dotfiles) $ chmod +x _setup.sh
 
-Or more granularly,
+# minimal setup 'required' for every machine I used
+(dotfiles) $ ./_setup.sh
 
-```
-cd <sub-dir-of-interest>
-chmod +x _setup.sh
-./_setup.sh
+# all the submodules
+(dotfiles) $ ./_setup.sh ALL
+
+# submodules one-by-one
+(dotfiles) $ ./_setup.sh vim bin bash
 ```

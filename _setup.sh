@@ -35,7 +35,11 @@ cat << EOF
     - ./_setup.sh
 
     # target specic application (e.g. julia)
-    - ./setup.sh julia
+    - ./_setup.sh julia
+
+    # all the submodules
+    - ./_setup.sh ALL
+
 EOF
 }
 
