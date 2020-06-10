@@ -56,12 +56,15 @@ _main () {
     total=0
     echo "List of paths to backup:"
     for i in "${items[@]}"; do
-        size=$(_dry $i | tail -n 1 | cut -d ' ' -f 4)
-        bytes=($(numfmt --from=iec $size))
-        total=$(($total + $bytes))
-        echo "- $i = $size"
+        if [[ "${i:0:1}" != "#" ]]; then
+            size=$(_dry ${i} | tail -n 1 | cut -d ' ' -f 4)
+            bytes=($(numfmt --from=iec $size))
+            total=$(($total + $bytes))
+            echo "- $i = $size"
+        else
+            echo "| skipping $i"
+        fi
     done
-
     echo "Total: $(numfmt --to=iec $total)"
 
     read -r -p "Are you sure? [Y/N] " response
@@ -86,6 +89,10 @@ _main () {
         echo "Syncing $i"
         _sync $i
     for i in "${items[@]}"; do
+        if [[ "${i:0:1}" != "#" ]]; then
+            echo "Syncing $i"
+            _sync $i
+        fi
     done
 }
 
@@ -111,6 +118,7 @@ cat << EOF
     file.ext
     Documents/folder
     Documents/other/folder --exclude=subfolder
+    # /commented/so/this/path/will/be/skipped/
     Pictures/ --exclude=subfolder --exclude=another/subfolder
 
     # TODO
