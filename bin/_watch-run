@@ -4,7 +4,9 @@ usage() {
 cat << EOF
     Usage: _watch-run 'file-or-file-glob-to-watch' 'cmd-to-run'
 
-    Shortcut that starts a file watcher and runs a cmd on modifications.
+    Shortcut that runs a cmd,
+    starts a file watcher and runs that same cmd on modifications.
+
     Use <ctrl-c> to stop it.
 EOF
 }
@@ -23,4 +25,5 @@ if [ $3 ]; then
     exit 1
 fi
 
+eval "$2"
 eval "while true; do inotifywait -q -e modify $1; $2; done"
