@@ -45,12 +45,17 @@ _main () {
         exit 1
     fi
 
+    # read BACKUPLIST line-by-line (not word-by-word)
+    # in `items` array variable
+    # https://stackoverflow.com/questions/11393817/read-lines-from-a-file-into-a-bash-array
+    IFS=$'\r\n' command eval 'items=($(cat $BACKUPLIST))'
+    # or maybe?
+    # IFS=$'\n' read -d '' -r -a items < $BACKUPLIST
     mkdir -p $FOLDER
 
     total=0
-    IFS=$'\r\n'
     echo "List of paths to backup:"
-    for i in $(< $BACKUPLIST); do
+    for i in "${items[@]}"; do
         size=$(_dry $i | tail -n 1 | cut -d ' ' -f 4)
         bytes=($(numfmt --from=iec $size))
         total=$(($total + $bytes))
@@ -78,10 +83,9 @@ _main () {
     echo "Copying BACKUPLIST.txt to $PARENT"
     cp $BACKUPLIST $PARENT
 
-    IFS=$'\r\n'
-    for i in $(< $BACKUPLIST); do
         echo "Syncing $i"
         _sync $i
+    for i in "${items[@]}"; do
     done
 }
 
