@@ -23,6 +23,13 @@ _sync () {
     popd > /dev/null
 }
 
+_sync_BACKUPLIST () {
+    pushd $HOME > /dev/null
+    echo "Copying BACKUPLIST.txt to $PARENT/"
+    eval "$RSYNC BACKUPLIST.txt $PARENT/"
+    popd > /dev/null
+}
+
 _dry () {
     pushd $HOME > /dev/null
     eval "${RSYNC}vn $FILTER $@ $FOLDER"
@@ -35,14 +42,25 @@ _main () {
             free=$(df -h | grep ${DEST%/} | tr -s ' ' | cut -d' ' -f 4)
             echo "Destination $DEST is mounted with $free available"
         fi
-    else
-        echo "ERROR: Backup destination $DEST does not exist. Exit"
-        exit 1
-    fi
 
-    if [[ -d $PARENT ]]; then
-        echo "ERROR: Backup folder $PARENT already exists. Exit"
-        exit 1
+        if [[ -d $PARENT ]]; then
+            echo "ERROR: Backup folder $PARENT already exists. Exit"
+            exit 1
+        fi
+        echo "Creating $FOLDER"
+        mkdir -p $FOLDER
+    else
+        ADDR="${DEST%%:*}"
+        FOLDER_REMOTE="${FOLDER#*:}"
+        ssh -q $ADDR exit
+        if [ $? -eq 0 ]; then
+            echo "Can connect to $ADDR"
+            echo "Creating $FOLDER_REMOTE on $ADDR"
+            ssh $ADDR mkdir -p $FOLDER_REMOTE
+        else
+            echo "ERROR: Backup destination $DEST does not exist. Exit"
+            exit 1
+        fi
     fi
 
     # read BACKUPLIST line-by-line (not word-by-word)
@@ -51,7 +69,6 @@ _main () {
     IFS=$'\r\n' command eval 'items=($(cat $BACKUPLIST))'
     # or maybe?
     # IFS=$'\n' read -d '' -r -a items < $BACKUPLIST
-    mkdir -p $FOLDER
 
     total=0
     echo "List of paths to backup:"
@@ -83,11 +100,7 @@ _main () {
             ;;
     esac
 
-    echo "Copying BACKUPLIST.txt to $PARENT"
-    cp $BACKUPLIST $PARENT
-
-        echo "Syncing $i"
-        _sync $i
+    _sync_BACKUPLIST
     for i in "${items[@]}"; do
         if [[ "${i:0:1}" != "#" ]]; then
             echo "Syncing $i"
@@ -109,6 +122,12 @@ cat << EOF
 
     # backup items in ~/BACKUPLIST.txt to ~/Destop/ (e.g. a somewhat dry run)
     - _backup ~/Destop
+
+    # backup items in ~/BACKUPLIST.txt to remote server (via ssh)
+    # (make sure to add your public key to the remote,
+    #  to not have to enter your password multiple times,
+    #  see http://www.linuxproblem.org/art_9.html for example)
+    - _backup username@ip:/path/to/some/folder/
 
     # backup items in /path/to/some/other/BACKUPLIST.txt to /media/other/drive
     - _backup /media/other/drive /path/to/some/other/BACKUPLIST.txt
