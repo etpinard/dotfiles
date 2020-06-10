@@ -29,7 +29,7 @@ _usage () {
 cat << EOF
     Usage: @etpinard/dotfiles/_setup.sh
 
-    Setup (mostly `ln -s`) personal dotfiles !
+    Setup (mostly "ln -s") personal dotfiles !
 
     # minimal setup 'required' for every machine I used
     - ./_setup.sh
