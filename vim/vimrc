@@ -57,8 +57,9 @@ colorscheme distinguished
 hi clear SpellBad
 hi SpellBad cterm=underline
 hi SpellBad ctermfg=red guifg=red
-" line numbers in the left margin
-set number
+" do not show line numbers in the left margin
+" (2020/06 update, looks better in tmux+alacritty)
+set nonumber
 " set terminal title
 " N.B. nvim has issues restoring terminal title on exit
 " see https://github.com/neovim/neovim/issues/4063
