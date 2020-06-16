@@ -53,7 +53,7 @@
      b-r="!f() { REMOTE=${1-origin}; git remote prune $REMOTE; git b -r; }; f"
 
 [core]
-    editor = vi
+    editor = "$(which nvim || which vim || which vi)"
 
 [difftool]
     prompt = false

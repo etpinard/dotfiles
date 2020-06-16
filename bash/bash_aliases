@@ -40,8 +40,10 @@ if [ -x "$(command -v ag)" ]; then
     alias ack='ag'
     alias a='ag'
 else
-    # but ack-grep is easier to install w/o sudo access
-    alias a='ack'
+    # but ack-grep is easier to install w/o sudo access,
+    # alias below ignores gitignore'd files (like ag does by default)
+    # to use ack outside of git repos, type out ack
+    alias a="git ls-files --others --cached --exclude-standard | ack -x"
 fi
 
 if [ -x "$(command -v nvim)" ]; then
