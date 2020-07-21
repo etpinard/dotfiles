@@ -128,9 +128,9 @@ cat << EOF
     - _backup ~/Destop
 
     # backup items in ~/BACKUPLIST.txt to remote server (via ssh)
-    # (make sure to add your public key to the remote,
-    #  to not have to enter your password multiple times,
-    #  see http://www.linuxproblem.org/art_9.html for example)
+    # Make sure to add your public key over to the remote e.g. with
+    # $ ssh-copy-id
+    # to not have to enter your password multiple times
     - _backup username@ip:/path/to/some/folder/
 
     # backup items in /path/to/some/other/BACKUPLIST.txt to /media/other/drive
