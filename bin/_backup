@@ -3,7 +3,11 @@
 DEST=${1:-/media/etienne/lexur16/}
 BACKUPLIST=${2:-$HOME/BACKUPLIST.txt}
 
-PARENT=$DEST/backup-$(date +"%Y-%m-%d")
+HOSTNAME=$(cat /etc/hostname 2> /dev/null || echo 'termux')
+DATE=$(date +"%Y-%m-%d")
+NAME="backup-$DATE-$HOSTNAME"
+
+PARENT=$DEST/$NAME
 FOLDER=$PARENT/backup
 
 # rsync with common options
