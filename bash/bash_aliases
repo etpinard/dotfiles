@@ -72,7 +72,7 @@ alias _rsync="rsync -ahR --info=progress2"
 alias _histgrep="history | grep"
 
 # in places where I do not want ssh-agent running all the time
-alias _ssh-add="eval $(ssh-agent) && ssh-add"
+alias _ssh-add="eval \"$(ssh-agent -s)\" && ssh-add"
 
 # quick pw generator
 alias _genpw="openssl rand -base64 16"
