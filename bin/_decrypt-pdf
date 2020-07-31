@@ -1,0 +1,22 @@
+#! /bin/bash
+
+usage() {
+cat << EOF
+    Usage: _decrypt-pdf
+
+    Decrypt password-protected PDF using qpdf
+
+    Ouputs the decrypted PDF file with the extension ".decrypted.pdf"
+EOF
+}
+
+main() {
+    filename=$(basname "$2" .pdf)
+    qpdf --password="$1" "$2" "${filename}.decrypted.pdf"
+}
+
+case $1 in
+    -h|--help) usage; exit;;
+esac
+
+main "$1" "$2"
