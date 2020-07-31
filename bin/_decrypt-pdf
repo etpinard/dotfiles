@@ -11,8 +11,8 @@ EOF
 }
 
 main() {
-    filename=$(basname "$2" .pdf)
-    qpdf --password="$1" "$2" "${filename}.decrypted.pdf"
+    filename=$(basename "$2" .pdf)
+    qpdf --password="$1" --decrypt "$2" "${filename}.decrypted.pdf"
 }
 
 case $1 in
