@@ -68,8 +68,11 @@ alias gg="git s"
 # most of the time, I want rsync to do this
 alias _rsync="rsync -ahR --info=progress2"
 
-# history+grep
+# history|grep
 alias _histgrep="history | grep"
+
+# ps aux|grep
+alias _psauxgrep="ps aux | grep -v grep | grep"
 
 # in places where I do not want ssh-agent running all the time
 alias _ssh-add="eval \"$(ssh-agent -s)\" && ssh-add"
