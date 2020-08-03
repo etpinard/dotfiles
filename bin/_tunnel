@@ -1,0 +1,28 @@
+#! /bin/bash
+
+usage() {
+cat << EOF
+    Usage: _tunnel
+
+    Easy ssh tunnel setup !
+
+    _tunnel <host> <port:9976>
+
+    Spawns an ssh tunnel from host:post to localhost:port,
+    while storing pid in ~/tunnel-<host><post>.pid
+EOF
+}
+
+main() {
+    file="$HOME/tunnel-$1$2.pid"
+    cmd="ssh -L $2:localhost:$2 -N -f -x $1"
+    eval $cmd
+    pid=$(pgrep -f "$cmd")
+    echo $pid > $file
+}
+
+case $1 in
+    -h|--help) usage; exit;;
+esac
+
+main $1 $2
