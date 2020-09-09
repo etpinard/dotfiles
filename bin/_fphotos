@@ -1,0 +1,35 @@
+#! /bin/bash
+
+usage() {
+cat << EOF
+    _fphotos
+
+    Usage:
+    $ _fphotos
+    $ _fphotos path/to/photo/directory/in/question/
+
+    Format photos files "name" and "date modifided" using
+    photo metadata.
+
+    Very useful when combining photos taken from multiple
+    sources (e.g. an Android phone and an iPhone) into
+    a single photo folder.
+EOF
+}
+
+# Ideas mostly taken from
+# https://askubuntu.com/questions/404567/how-to-organize-sort-images-by-exif-image-data#634456
+
+main() {
+    # rename files: YYYYMMDD-HHMMSS-cnt.ext
+    exiftool '-filename<CreateDate' -d %Y%m%d-%H%M%S%-.2nc.%%le -r $1
+    # update "date modifided"
+    # TODO does not work with .mov files
+    jhead -ft $1/*
+}
+
+case $1 in
+    -h|--help) usage; exit;;
+esac
+
+main "${1-$(pwd)}"
