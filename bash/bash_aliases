@@ -79,7 +79,7 @@ alias _psauxgrep="ps aux | grep -v grep | grep"
 alias _ssh-add="eval \"$(ssh-agent -s)\" && ssh-add"
 
 # quick pw generator
-alias _genpw="openssl rand -base64 16"
+alias _genpw="openssl rand -base64 24"
 
 # netstat with most common options
 alias _netstat="netstat -tulpn"
