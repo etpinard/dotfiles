@@ -1,0 +1,45 @@
+#! /bin/bash
+
+usage() {
+cat << EOF
+    _unzip
+
+    Usage:
+    $ _unzip path/to/zipfile.zip
+
+    Prompt users with zip file contents and give them the option:
+    - to extract the zip file contents to a directory named after the zip file
+    - to delete the zip file after the extraction is complete.
+EOF
+}
+
+main () {
+    unzip -l "$1"
+
+    read -r -p "Extract into new directory? [Y/n] " response
+    case "$response" in
+        [nN][oO]|[nN])
+            unzip "$1"
+            ;;
+        *)
+            dirname=$(basename "$1" .zip)
+            unzip "$1" -d "$dirname"
+            ;;
+    esac
+
+    read -r -p "Delete $1 [Y/n] " response
+    case "$response" in
+        [nN][oO]|[nN])
+            exit 0
+            ;;
+        *)
+            rm "$1"
+            ;;
+    esac
+}
+
+case $1 in
+    -h|--help) usage; exit;;
+esac
+
+main "$1"
