@@ -81,5 +81,8 @@ alias _ssh-add="eval \"$(ssh-agent -s)\" && ssh-add"
 # quick pw generator
 alias _genpw="openssl rand -base64 24"
 
+# quick uid generator
+alias _genuid="openssl rand -base64 6"
+
 # netstat with most common options
 alias _netstat="netstat -tulpn"
