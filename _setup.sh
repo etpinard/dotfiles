@@ -3,7 +3,7 @@
 EXIT_CODE=0
 
 # all the submodules
-declare -a ALL=("bin" "bash" "ssh" "git" "vim" "tmux" "julia" "gnome" "termux")
+declare -a ALL=("bin" "bash" "ssh" "git" "vim" "tmux" "julia" "gnome" "termux", "alacritty")
 # the submodules that should 'always' get installed
 declare -a ALWAYS=("bin" "bash" "ssh" "git" "vim" "tmux")
 
