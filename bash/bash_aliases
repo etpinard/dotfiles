@@ -67,7 +67,7 @@ alias clippaste="xclip -sel clip -o"
 alias gg="git s"
 
 # most of the time, I want rsync to do this
-alias _rsync="rsync -ahR --info=progress2"
+alias _rsync="rsync -r --info=progress2"
 
 # history|grep
 alias _histgrep="history | grep"
