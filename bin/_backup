@@ -4,8 +4,9 @@ DEST=${1:-/media/etienne/lexur16/}
 BACKUPLIST=${2:-$HOME/BACKUPLIST.txt}
 
 HOSTNAME=$(cat /etc/hostname 2> /dev/null || echo 'termux')
+DISTRO=$(cat /etc/os-release | grep PRETTY_NAME | cut -d '=' -f2 | tr -d '"' | tr -d '.' | tr -d '!' | tr -d ' ' | tr '[:upper:]' '[:lower:]' 2> /dev/null || echo '')
 DATE=$(date +"%Y-%m-%d")
-NAME="backup-$DATE-$HOSTNAME"
+NAME="backup-$DATE-$HOSTNAME-$DISTRO"
 
 PARENT=$DEST/$NAME
 FOLDER=$PARENT/backup
