@@ -26,6 +26,7 @@
     rbm = rebase master
 
     d = diff
+    dc = diff --cached
     ss = status
     s = status -sb
     last = show HEAD
