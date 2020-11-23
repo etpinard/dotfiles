@@ -53,7 +53,9 @@
     b-r="!f() { REMOTE=${1-origin}; git remote prune $REMOTE; git b -r; }; f"
 
     # show nth previous commit from current or any local branch
-    prev="!f() { BRANCH=${1-HEAD} POS=${2-0}; git show $(git rev-parse --short $BRANCH~$POS); }; f"
+    # $ git prev 2
+    # $ git prev 10 some-other-branch
+    prev="!f() { BRANCH=${2-HEAD} POS=${1-0}; git show $(git rev-parse --short $BRANCH~$POS); }; f"
 
 [core]
     editor = "$(which nvim || which vim || which vi)"
