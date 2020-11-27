@@ -17,12 +17,19 @@ atreplinit() do repl
     end
 
     # taken from
-    # https://github.com/timholy/Revise.jl/blob/373d4e570fe8a22f914e1a3d8693cec5d3b1d947/docs/src/config.md#using-revise-by-default
+    # https://timholy.github.io/Revise.jl/stable/config/#Julia-1.5-and-higher-1
     try
         @info "Turning on Revise"
         @eval using Revise
-        @async Revise.wait_steal_repl_backend()
+        if VERSION < v"1.5.0"
+            @async Revise.wait_steal_repl_backend()
+        end
+        # print the Revise version
+        # N.B. if Revise is part of the activated environment
+        #      the julia session will use that version
+        @eval using Pkg
+        Pkg.status("Revise")
     catch e
-        @warn(e.msg)
+        @warn "Error initializing Revise" exception=(e, catch_backtrace())
     end
 end
