@@ -27,14 +27,15 @@ alias untar='tar -zxvf'
 # evince pdf viewer
 alias ev='evince'
 
-# ls
-alias sl='ls'
+# l for ls
 alias l='ls'
+alias sl='ls'
 alias la='ls -A'
 alias ll='ls -AlFh'
 alias lla='ll'
 alias lls='ll'
 
+# a for ag/ack grepping
 if [ -x "$(command -v ag)" ]; then
     # use ag, not ack
     # https://github.com/ggreer/the_silver_searcher
@@ -47,6 +48,7 @@ else
     alias a="git ls-files --others --cached --exclude-standard | ack -x"
 fi
 
+# v for (neo)vi(m)
 if [ -x "$(command -v nvim)" ]; then
     # use neovim, not vim, not vi
     # https://github.com/neovim/neovim
@@ -59,12 +61,15 @@ else
     alias v='vi'
 fi
 
+
+# would be nice to have 'g' for git
+# while retaining sub-command tab-completion
+# maybe try again https://gist.github.com/JuggoPop/10706934
+alias gg="git s"
+
 # copy / paste to clipboard
 alias clipcopy="xclip -sel clip"
 alias clippaste="xclip -sel clip -o"
-
-# maybe try again https://gist.github.com/JuggoPop/10706934
-alias gg="git s"
 
 # most of the time, I want rsync to do this
 alias _rsync="rsync -r --info=progress2"
