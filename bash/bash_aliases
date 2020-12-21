@@ -61,6 +61,8 @@ else
     alias v='vi'
 fi
 
+# r for ranger file navigator
+alias r='ranger'
 
 # would be nice to have 'g' for git
 # while retaining sub-command tab-completion
