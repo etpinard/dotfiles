@@ -64,6 +64,9 @@ fi
 # r for ranger file navigator
 alias r='ranger'
 
+# t for tmux
+alias t='tmux'
+
 # would be nice to have 'g' for git
 # while retaining sub-command tab-completion
 # maybe try again https://gist.github.com/JuggoPop/10706934
