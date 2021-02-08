@@ -1,0 +1,23 @@
+#! /bin/bash
+
+usage() {
+cat << EOF
+    Usage: _temp
+
+    Show device temperature
+
+    N.B.
+    - Needs sudo priviledges
+    - Currently only Works on raspberry-pi-os
+EOF
+}
+
+main() {
+    /opt/vc/bin/vcgencmd measure_temp
+}
+
+case $1 in
+    -h|--help) usage; exit;;
+esac
+
+main
