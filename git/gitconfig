@@ -60,6 +60,9 @@
     # $ git prev 10 some-other-branch
     prev="!f() { BRANCH=${2-HEAD} POS=${1-0}; git show $(git rev-parse --short $BRANCH~$POS); }; f"
 
+    # checkout all modified files
+    co-all="!f() { git ls-files -m | xargs git checkout --; }; f"
+
 [core]
     editor = "$(which nvim || which vim || which vi)"
 
