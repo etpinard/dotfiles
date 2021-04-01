@@ -33,7 +33,9 @@
     back = reset HEAD^
     ll = log
     l = log --oneline -n 10
+    # list modified files
     lm = diff --name-only --diff-filter=AM
+    # list untracked files
     lu = ls-files --others --exclude-standard
 
     # git alias with parameters
