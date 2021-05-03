@@ -96,3 +96,6 @@ alias _genuid="openssl rand -base64 6"
 
 # netstat with most common options
 alias _netstat="netstat -tulpn"
+
+# fetch WAN ip info
+alias _ip="curl ipinfo.io"
