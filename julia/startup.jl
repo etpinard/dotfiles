@@ -32,4 +32,13 @@ atreplinit() do repl
     catch e
         @warn "Error initializing Revise" exception=(e, catch_backtrace())
     end
+
+    try
+        @info "Turning on TerminalPager"
+        @eval using TerminalPager
+        @eval using Pkg
+        Pkg.status("TerminalPager")
+    catch e
+        @warn "Error initializing TerminalPager" exception=(e, catch_backtrace())
+    end
 end
