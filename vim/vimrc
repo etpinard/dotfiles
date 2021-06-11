@@ -38,6 +38,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 " Navigate between vim splits and tmux panes with same bindings
 Plug 'christoomey/vim-tmux-navigator'
+" For aligning text
+Plug 'godlygeek/tabular'
 call plug#end()
 
 "" vim-only
