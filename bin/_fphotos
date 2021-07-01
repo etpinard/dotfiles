@@ -20,6 +20,15 @@ EOF
 # Ideas mostly taken from
 # https://askubuntu.com/questions/404567/how-to-organize-sort-images-by-exif-image-data#634456
 
+# Other useful exiftool commands:
+#
+# # show camera make and date tags
+# $ exiftool -Make -alldates <file>
+#
+# # adjust date tags e.g. to account for different timezones
+# $ exiftool -if '$Make eq "OLYMPUS IMAGING CORP."' . -alldates+=1 -overwrite_original
+#
+
 main() {
     # rename files: YYYYMMDD-HHMMSS-cnt.ext
     exiftool '-filename<CreateDate' -d %Y%m%d-%H%M%S%-.2nc.%%le -r $1
