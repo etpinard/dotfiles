@@ -99,3 +99,7 @@ alias _netstat="netstat -tulpn"
 
 # fetch WAN ip info
 alias _ip="curl ipinfo.io"
+
+# alias for bat https://github.com/sharkdp/bat
+# N.B. _cat is much easier to write than bat
+alias _cat="batcat"

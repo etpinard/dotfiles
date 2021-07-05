@@ -12,7 +12,7 @@ popd > /dev/null
 
 echo 'Install startup.jl deps'
 if [ -x "$(command -v julia)" ]; then
-    julia -e 'using Pkg; Pkg.add("Revise")'
+    julia -e 'using Pkg; Pkg.add("Revise"); Pkg.add("TerminalPager")'
 else
     echo 'julia not in path, skip step'
 fi

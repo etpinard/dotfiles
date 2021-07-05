@@ -9,3 +9,7 @@ See notes in [`vim/README.md`](../vim/README.md).
 ## A note on ssh-agent forwarding / tmux
 
 See notes in [`ssh/README.md`](../ssh/README.md)
+
+## Plugins
+
+- https://github.com/tmux-plugins/tmux-resurrect
